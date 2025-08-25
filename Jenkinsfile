@@ -4,7 +4,7 @@ pipeline {
     environment {
         TERRAFORM_DIR = 'terraform'
         CONTAINER_NAME = 'nginx'
-        HOST_PORT = '8080'
+        HOST_PORT = '8081'
     }
 
     stages {

@@ -139,7 +139,15 @@ pipeline {
 ```
 
 
-✅ __Checking created folder/state after pipeline was successfully completed:__     
+ ## ⚙️ Creating and starting Jenkins pipeline ##  
+![Alt Text](images/image002.png)
+![Alt Text](images/image009.png)
+![Alt Text](images/image013.png)
+![Alt Text](images/image005.png)
+
+
+
+✅ __Checking state after pipeline was successfully completed:__     
 ```yaml
 root@jenkins-server java/terraform on main via 💠 default ➜  pwd
 

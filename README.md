@@ -137,3 +137,99 @@ pipeline {
     }
 }
 ```
+
+
+✅ __Checking created folder/state after pipeline was successfully completed:__     
+```yaml
+root@jenkins-server java/terraform on main via 💠 default ➜  pwd
+
+/var/lib/jenkins/workspace/java/terraform  
+
+
+root@jenkins-server java/terraform on main via 💠 default ➜  terraform state list
+
+docker_container.nginx
+
+docker_image.nginx
+
+ 
+root@jenkins-server java/terraform on main via 💠 default ➜  cat main.tf
+
+terraform {
+
+  required_providers {
+
+    docker = {
+
+      source  = "kreuzwerker/docker"
+
+      version = "~> 3.0.1"
+
+    }
+
+  }
+
+}
+```
+
+
+
+✅ __NGINX container is up and running and accessed on port 8081:__  
+```yaml
+root@jenkins-server ~/.terraform.d ➜  docker ps -a
+
+CONTAINER ID   IMAGE          COMMAND                  CREATED          STATUS          PORTS                  NAMES
+
+93102bc6f3de   nginx:latest   "/docker-entrypoint.…"   24 seconds ago   Up 24 seconds   0.0.0.0:8081->80/tcp   nginx
+```
+
+```yaml
+root@jenkins-server ~/.terraform.d ✖ curl http://localhost:8081
+
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<title>Welcome to nginx!</title>
+
+<style>
+
+html { color-scheme: light dark; }
+
+body { width: 35em; margin: 0 auto;
+
+font-family: Tahoma, Verdana, Arial, sans-serif; }
+
+</style>
+
+</head>
+
+<body>
+
+<h1>Welcome to nginx!</h1>
+
+<p>If you see this page, the nginx web server is successfully installed and
+
+working. Further configuration is required.</p>
+
+ 
+
+<p>For online documentation and support please refer to
+
+<a href=http://nginx.org/>nginx.org</a>.<br/>
+
+Commercial support is available at
+
+<a href=http://nginx.com/>nginx.com</a>.</p>
+
+ 
+
+<p><em>Thank you for using nginx.</em></p>
+
+</body>
+
+</html>
+```
+ 
